@@ -1,11 +1,11 @@
-require('dotenv').config({ path: 'src/.env' })
+require('dotenv').config()
 const express = require('express')
 const app = express()
 var cors = require('cors')
 const port = process.env.PORT || 3000
 
 const connect = require('./config/db')
-// connect()
+connect()
 
 app.use(express.static('public'))
 app.use(express.json())

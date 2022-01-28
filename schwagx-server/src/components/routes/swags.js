@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', getSwags);
 router.post('/', createSwag);
 router.get('/:id', getSwag);
-router.patch('/:id', updateSwag);
+router.put('/:id', updateSwag);
 router.delete('/:id', deleteSwag);
 
 module.exports = router;
