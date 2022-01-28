@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Swag Exchange API"
+servers:
+  - url: "localhost:3000"
+paths:
+  /swags:
+    get:
+      summary: List of All Swags
+      operationId: getSwags
+      tags:
+        - Swag
+      responses:
+        "200":
+          description: Swag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SwagListing"
+    post:
+      summary: Swag
+      operationId: addSwag
+      tags:
+        - Restaurant
+      requestBody:
+        required: true
+        description: Swag
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Swag"
+      responses:
+        "201":
+          description: Swag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Swag"
+components:
+  schemas:
+    SwagListing:
+      type: array
+      items:
+        $ref: "#/components/schemas/Swag"
+    Swag:
+      type: object
+      required:
+        - name
+        - image
+        - owner
+        - details
+        - status
+      properties:
+        id:
+          description: Unique identifier for the swag
+          type: integer
+        name:
+          description: The name of the Swag.
+          type: string
+        image:
+          description: The image url of the swag.
+          type: string
+        owner:
+          description: The Owner who owns the swag.
+          type: string
+        details:
+          description: Details about the Swag.
+          type: string
+        status:
+          description: Whether it is available or getting exchanged
+          type: boolean
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []

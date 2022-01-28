@@ -4,7 +4,7 @@ info:
   title: Swags
   description: "This is an API for managing the inventory of Swags."
 servers:
-  - url: "https://e72c5e94-9554-4e06-8875-a2d946cd1801.mock.pstmn.io"
+  - url: "http://localhost:3000"
 paths:
   /swags:
     get:
@@ -107,6 +107,7 @@ components:
         - details
         - owner
         - image
+        - status
       properties:
         id:
           description: Unique identifier for the Swag
@@ -123,3 +124,6 @@ components:
         image:
           description: The image url of the Swag.
           type: string
+        status:
+          description: If the swag is available or not.
+          type: boolean
